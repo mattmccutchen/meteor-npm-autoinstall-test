@@ -3,6 +3,19 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+// It wasn't clear in the Meteor guide that this is the way to actually load a
+// CSS file from an npm package into the app.
+import 'codemirror/lib/codemirror.css';
+
+var CodeMirror = require('codemirror');
+
+var cmInst = null;
+
+Template.body.onRendered(function() {
+  cmInst = CodeMirror(this.find("#cm"), {value: "Hello world!"});
+  cmInst.setSize("100%", "100%");
+});
+
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.counter = new ReactiveVar(0);
