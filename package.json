@@ -10,7 +10,7 @@
   },
   "meteor": {
     "npmAutoInstall": {
-       "command": "meteor npm prune && meteor npm install",
+       "command": "unset TOOL_NODE_FLAGS && meteor npm prune && meteor npm install",
        "watchSpec": ["package.json", "npm-shrinkwrap.json"]
     }
   }
